@@ -1,36 +1,30 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const ChatCreatingForm = () => {
-  const { idInstance, apiTokenInstance } = useParams();
-  const [userData, setUserData] = useState(null);
+  const [resipientNum, setResipientNum] = useState("");
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.green-api.com/waInstance${idInstance}/GetSettings/${apiTokenInstance}`
-        );
-        if (response.status === 200) {
-          setUserData(response.data);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchUserData();
-  }, [idInstance, apiTokenInstance]);
-
-  if (!userData) {
-    return <div>Loading...</div>;
+  const resipientNumHandler = (e) => {
+    e.preventDefault();
+    setResipientNum(e.target.value);
   }
 
-  // return <div>{userData}</div>;
+  const savingNumberHandler = () => {
+    if (resipientNum) {
+      navigate(`./${resipientNum}`)
+    }
+  }
+
   return (
     <div>
-      <p>+{userData.wid.slice(0, -5)}</p>
+    <form onSubmit={savingNumberHandler}>
+      <label>Enter your phone number</label>
+      <input type="text" value={resipientNum} onChange={resipientNumHandler}/>
+      <button type="submit">Create</button>
+    </form>
+      
     </div>
-  );
+  )
 };

@@ -8,9 +8,7 @@ export const IdentificationForm = () => {
   // const [apiTokenInstance, setApiTokenInstance] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const authorizingData = async (e) => {
     const idInstance = e.target.elements.idInstance.value;
     const apiTokenInstance = e.target.elements.apiTokenInstance.value;
 
@@ -20,14 +18,33 @@ export const IdentificationForm = () => {
       );
       console.log(response.data);
 
+      // if (response.status === 200) {
+      //   navigate(`/creating/${idInstance}/${apiTokenInstance}`);
+      //   console.log("Success!");
+      // }
+    } catch (error) {
+      console.error(error);
+    }
+    try {
+      const response = await axios.get(
+        `https://api.green-api.com/waInstance${idInstance}/GetSettings/${apiTokenInstance}`
+      );
       if (response.status === 200) {
-        // navigate("/creating");
-        navigate(`/creating/${idInstance}/${apiTokenInstance}`);
-        console.log("Success!");
+        console.log(response.data);
       }
     } catch (error) {
       console.error(error);
     }
+    if (idInstance && apiTokenInstance) {
+      navigate(`/creating/${idInstance}/${apiTokenInstance}`);
+      console.log("Success!");
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    authorizingData(e);
   };
 
   return (
