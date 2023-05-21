@@ -48,16 +48,24 @@ export const IdentificationForm = () => {
   };
 
   return (
-    <div>
-      <h2>Identification</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="idInstance" placeholder="Your idInstance" />
+    <div className={styles.main}>
+      <h2 className={styles.header}>identification</h2>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input
+          className={styles.input}
+          type="text"
+          name="idInstance"
+          placeholder="Your idInstance"
+          required
+        />
+        <input
+          className={styles.input}
           type="text"
           name="apiTokenInstance"
           placeholder="Your apiTokenInstance"
+          required
         />
-        <button type="submit">Identify</button>
+        <button className={styles.btn} type="submit">identify</button>
       </form>
     </div>
   );

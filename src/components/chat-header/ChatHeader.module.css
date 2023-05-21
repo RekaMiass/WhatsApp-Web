@@ -1,0 +1,11 @@
+.header {
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    height: 8%;
+    background-color: #f0f2f5;
+}
+
+.img {
+    border-radius: 50%;
+}

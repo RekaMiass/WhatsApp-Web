@@ -1,0 +1,19 @@
+.message-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 8%;
+  background-color: #f0f2f5;
+}
+
+.input {
+  padding: 10px;
+  width: 90%;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #53646e;
+  font-size: 18px;
+}

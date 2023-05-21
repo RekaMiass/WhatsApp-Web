@@ -1,18 +1,10 @@
-import { useState } from "react";
-import { MessageForm } from "../../components/message-form/MessageForm";
-import { MessagesArea } from "../../components/messages-area/MessagesArea";
+import styles from "./Chat.module.css";
+import { ChatContainer } from "../../components/chat-container/ChatContainer"
 
 export const Chat = () => {
-  const [messages, setMessages] = useState([]);
-
-  const onCreatingMessage = (message) => {
-    setMessages((prevMessages) => [...prevMessages, message]);
-  };
-
-  return (
-    <div>
-      <MessageForm createMessage={onCreatingMessage} />
-      <MessagesArea messages={messages} />
-    </div>
-  );
-};
+    return (
+        <div className={styles.chat}>
+            <ChatContainer />
+        </div>
+    )
+}

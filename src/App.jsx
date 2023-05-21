@@ -1,4 +1,5 @@
 import "./App.css";
+import "./reset.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ChatCreating } from "./pages/Chat-creating/ChatCreating";
 import { Identification } from "./pages/Identification/Identification";

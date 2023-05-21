@@ -1,3 +1,4 @@
+import styles from "./MessageForm.module.css";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -17,7 +18,7 @@ export const MessageForm = ({ createMessage }) => {
       const response = await axios.post(
         `https://api.green-api.com/waInstance${idInstance}/SendMessage/${apiTokenInstance}`,
         {
-          chatId: `${resipientNum}@c.us`,
+          chatId: `7${resipientNum}@c.us`,
           message: `${messageText}`,
         }
       );
@@ -27,7 +28,7 @@ export const MessageForm = ({ createMessage }) => {
   };
 
   const onKeyPress = (e) => {
-    if (e.key === "Enter" || e.type === "click") {
+    if (e.key === "Enter") {
       sendMessageHandler();
       createMessage(messageText);
       setMessageText("");
@@ -35,17 +36,15 @@ export const MessageForm = ({ createMessage }) => {
   };
 
   return (
-    <section>
-      {/* <p>+{userData.wid.slice(0, -5)}</p> */}
+    <section className={styles["message-form"]}>
       <input
+      className={styles.input}
         type="text"
+        placeholder="Type a message"
         value={messageText}
         onChange={createMessageHandler}
         onKeyDown={onKeyPress}
       />
-      <button type="submit" onClick={onKeyPress}>
-        Send
-      </button>
     </section>
   );
 };
