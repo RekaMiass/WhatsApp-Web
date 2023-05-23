@@ -3,17 +3,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const ChatCreatingForm = () => {
-  const [resipientNum, setResipientNum] = useState("");
+  const [recipientNum, setRecipientNum] = useState("");
   const navigate = useNavigate();
 
-  const resipientNumHandler = (e) => {
+  const recipientNumHandler = (e) => {
     e.preventDefault();
-    setResipientNum(e.target.value);
+    setRecipientNum(e.target.value);
   };
 
   const savingNumberHandler = () => {
-    if (resipientNum) {
-      navigate(`./${resipientNum}`);
+    if (recipientNum) {
+      navigate(`./${recipientNum}`);
     }
   };
 
@@ -27,11 +27,10 @@ export const ChatCreatingForm = () => {
           <label className={styles.label}>+7</label>
           <input
             className={styles.input}
-            // type="text"
-            type="tel"
+            type="text"
             placeholder="9xxxxxxxxx"
-            value={resipientNum}
-            onChange={resipientNumHandler}
+            value={recipientNum}
+            onChange={recipientNumHandler}
             required
           />
         </div>

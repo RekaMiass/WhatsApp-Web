@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 export const MessageForm = ({ createMessage }) => {
-  const { idInstance, apiTokenInstance, resipientNum } = useParams();
+  const { idInstance, apiTokenInstance, recipientNum } = useParams();
   const [messageText, setMessageText] = useState("");
 
   const createMessageHandler = (e) => {
@@ -14,14 +14,16 @@ export const MessageForm = ({ createMessage }) => {
   };
 
   const sendMessageHandler = async () => {
+    
     try {
       const response = await axios.post(
         `https://api.green-api.com/waInstance${idInstance}/SendMessage/${apiTokenInstance}`,
         {
-          chatId: `7${resipientNum}@c.us`,
+          chatId: `7${recipientNum}@c.us`,
           message: `${messageText}`,
         }
       );
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -38,7 +40,7 @@ export const MessageForm = ({ createMessage }) => {
   return (
     <section className={styles["message-form"]}>
       <input
-      className={styles.input}
+        className={styles.input}
         type="text"
         placeholder="Type a message"
         value={messageText}

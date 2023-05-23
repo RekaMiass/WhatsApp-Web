@@ -1,0 +1,76 @@
+.messages {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  margin: 20px 40px;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  word-wrap: break-word;
+  padding: 10px;
+  background-color: #fff;
+  min-width: 70px;
+  width: max-content;
+  min-height: 20px;
+  height: min-content;
+  border-radius: 10px;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* ////входящее
+{
+    "receiptId": 55,
+    "body": {
+        "typeWebhook": "incomingMessageReceived",
+        "instanceData": {
+            "idInstance": 1101823224,
+            "wid": "79823150580@c.us",
+            "typeInstance": "whatsapp"
+        },
+        "timestamp": 1684759798,
+        "idMessage": "3A4BC74B48B5D13C6EA5",
+        "senderData": {
+            "chatId": "79123278223@c.us",
+            "chatName": "Ольга",
+            "sender": "79123278223@c.us",
+            "senderName": "Ольга"
+        },
+        "messageData": {
+            "typeMessage": "textMessage",
+            "textMessageData": {
+                "textMessage": "Да"
+            }
+        }
+    }
+}
+
+////исходящее
+{
+    "receiptId": 57,
+    "body": {
+        "typeWebhook": "outgoingMessageReceived",
+        "instanceData": {
+            "idInstance": 1101823224,
+            "wid": "79823150580@c.us",
+            "typeInstance": "whatsapp"
+        },
+        "timestamp": 1684759808,
+        "idMessage": "3ACAAE65602C538167C5",
+        "senderData": {
+            "chatId": "79123278223@c.us",
+            "chatName": "Ольга",
+            "sender": "79823150580@c.us",
+            "senderName": "Maria"
+        },
+        "messageData": {
+            "typeMessage": "textMessage",
+            "textMessageData": {
+                "textMessage": "А ты где?"
+            }
+        }
+    }
+} */

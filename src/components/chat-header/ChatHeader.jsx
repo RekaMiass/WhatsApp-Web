@@ -2,9 +2,9 @@ import styles from "./ChatHeader.module.css";
 import { useParams } from "react-router-dom";
 
 export const ChatHeader = () => {
-  const { resipientNum } = useParams();
+  const { recipientNum } = useParams();
 
-  const numValidation = resipientNum.split("");
+  const numValidation = recipientNum.split("");
   numValidation.splice(3, 0, " ");
   numValidation.splice(7, 0, "-");
   numValidation.splice(10, 0, "-");

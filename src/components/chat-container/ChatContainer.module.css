@@ -1,6 +1,8 @@
 .container {
     display: flex;
     flex-direction: column;
+    background-image: url("/public/messages-bg.png");
+    background-size: cover;
     width: 1010px;
     height: 750px;
     margin-top: 20px;
