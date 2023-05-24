@@ -1,9 +1,11 @@
 import styles from "./IdentificationForm.module.css";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const IdentificationForm = () => {
   const navigate = useNavigate();
+  const [validationError, setValidationError] = useState("");
 
   const authorizingData = async (e) => {
     const idInstance = e.target.elements.idInstance.value;
@@ -16,6 +18,7 @@ export const IdentificationForm = () => {
         navigate(`/creating/${idInstance}/${apiTokenInstance}`);
       }
     } catch (error) {
+      setValidationError("User is not found");
       console.error(error);
     }
   };
@@ -44,6 +47,7 @@ export const IdentificationForm = () => {
           placeholder="Your apiTokenInstance"
           required
         />
+        <p className={validationError ? styles.error : styles['hidden-error']}>{validationError}</p>
         <button className={styles.btn} type="submit">
           identify
         </button>

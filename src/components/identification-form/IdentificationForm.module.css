@@ -34,6 +34,18 @@
   font-size: 18px;
 }
 
+.error {
+  visibility: visible;
+  height: 0;
+  color: #e40505;
+  font-size: 12px;
+}
+
+.hidden-error {
+  visibility: hidden;
+  height: 0;
+}
+
 .btn {
   font-family: "Open Sans", sans-serif;
   margin-top: 20px;
