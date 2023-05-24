@@ -1,27 +1,28 @@
 .area {
-  /* background-image: url("/public/messages-bg.png");
-    background-size: cover; */
   width: 100%;
   height: 84%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: flex-end; */
   overflow-y: scroll;
-}
-
-.scroll-messages {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  height: 100%;
 }
 
 .messages {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   gap: 5px;
   margin: 20px 40px;
+}
+
+.received-messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.sent-messages {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .message {
@@ -30,18 +31,17 @@
   justify-content: flex-start;
   word-wrap: break-word;
   padding: 10px;
-  background-color: #dafdd4;
-  min-width: 70px;
-  width: max-content;
+  width: fit-content;
+  max-width: 200px;
   min-height: 20px;
   height: min-content;
   border-radius: 10px;
   box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
-.receiptMessages {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  
+.sent-message {
+  background-color: #dafdd4;
+}
+.received-message {
+  background-color: #fff;
 }

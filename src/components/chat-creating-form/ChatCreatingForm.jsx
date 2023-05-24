@@ -13,7 +13,7 @@ export const ChatCreatingForm = () => {
 
   const savingNumberHandler = () => {
     if (recipientNum) {
-      navigate(`./${recipientNum}`);
+      navigate(`./chat/${recipientNum}`);
     }
   };
 
@@ -34,7 +34,9 @@ export const ChatCreatingForm = () => {
             required
           />
         </div>
-        <button className={styles.btn} type="submit">Start chatting</button>
+        <button className={styles.btn} type="submit">
+          Start chatting
+        </button>
       </form>
     </div>
   );

@@ -14,7 +14,13 @@ export const MessageForm = ({ createMessage }) => {
   };
 
   const sendMessageHandler = async () => {
-    
+    const newMessage = {
+      source: "sent",
+      text: messageText,
+      timestamp: Date.now(),
+    };
+    createMessage((prevMessages) => [newMessage, ...prevMessages]);
+    setMessageText("");
     try {
       const response = await axios.post(
         `https://api.green-api.com/waInstance${idInstance}/SendMessage/${apiTokenInstance}`,
@@ -32,8 +38,6 @@ export const MessageForm = ({ createMessage }) => {
   const onKeyPress = (e) => {
     if (e.key === "Enter") {
       sendMessageHandler();
-      createMessage(messageText);
-      setMessageText("");
     }
   };
 

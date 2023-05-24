@@ -1,7 +1,7 @@
 .chat {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    height: 130px;
-    background-color: #00aa85;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 130px;
+  background-color: #00aa85;
 }

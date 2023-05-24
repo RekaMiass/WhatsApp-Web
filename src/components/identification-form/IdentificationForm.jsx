@@ -1,11 +1,8 @@
 import styles from "./IdentificationForm.module.css";
-// import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const IdentificationForm = () => {
-  // const [idInstance, setIdInstance] = useState("");
-  // const [apiTokenInstance, setApiTokenInstance] = useState("");
   const navigate = useNavigate();
 
   const authorizingData = async (e) => {
@@ -17,11 +14,6 @@ export const IdentificationForm = () => {
         `https://api.green-api.com/waInstance${idInstance}/SetSettings/${apiTokenInstance}`
       );
       console.log(response.data);
-
-      // if (response.status === 200) {
-      //   navigate(`/creating/${idInstance}/${apiTokenInstance}`);
-      //   console.log("Success!");
-      // }
     } catch (error) {
       console.error(error);
     }
@@ -65,7 +57,9 @@ export const IdentificationForm = () => {
           placeholder="Your apiTokenInstance"
           required
         />
-        <button className={styles.btn} type="submit">identify</button>
+        <button className={styles.btn} type="submit">
+          identify
+        </button>
       </form>
     </div>
   );

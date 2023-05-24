@@ -1,9 +1,8 @@
-import styles from "./ReceivedMessages.module.css";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
 
-export const ReceivedMessages = ({ gettingMessages, gottenMessages }) => {
+export const ReceivedMessages = ({ gettingMessages }) => {
   const { idInstance, apiTokenInstance, recipientNum } = useParams();
 
   useEffect(() => {
@@ -14,44 +13,37 @@ export const ReceivedMessages = ({ gettingMessages, gottenMessages }) => {
         );
 
         if (
-          response.data &&
+          response.data !== null &&
           response.data.body.senderData.chatId === `7${recipientNum}@c.us`
         ) {
+          const newMessage = {
+            source: "received",
+            text: response.data.body.messageData.textMessageData.textMessage,
+            timestamp: Date.now(),
+          };
+          gettingMessages((prevMessages) => [...prevMessages, newMessage]);
+
           console.log(response.data);
-          gettingMessages(
-            response.data.body.messageData.textMessageData.textMessage
+          await axios.delete(
+            `https://api.green-api.com/waInstance${idInstance}/DeleteNotification/${apiTokenInstance}/${response.data.receiptId}`
           );
-          // gettingMessages(
-          //   response.data.body.messageData.extendedTextMessageData.text
-          // );
+        } else if (
+          response.data &&
+          response.data?.body.senderData.chatId !== `7${recipientNum}@c.us`
+        ) {
           await axios.delete(
             `https://api.green-api.com/waInstance${idInstance}/DeleteNotification/${apiTokenInstance}/${response.data.receiptId}`
           );
         }
       } catch (error) {
         console.error(error);
-      } 
-      finally {
-        fetchMessage();
       }
     };
-    // const interval = setInterval(() => {
-    //   fetchMessage();
-    // }, 6000);
 
-    // return () => {
-    //   clearInterval(interval);
-    // };
-    fetchMessage();
-  }, []);
+    const interval = setInterval(fetchMessage, 5100);
 
-  return (
-    <div className={styles.messages}>
-      {gottenMessages.map((message, index) => (
-        <div className={styles.message} key={index}>
-          {message}
-        </div>
-      ))}
-    </div>
-  );
+    return () => {
+      clearInterval(interval);
+    };
+  }, [gettingMessages]);
 };

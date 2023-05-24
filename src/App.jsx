@@ -10,9 +10,14 @@ function App() {
     <Router>
       <Routes className="App">
         <Route path="/" element={<Identification />} />
-        <Route path="/creating/:idInstance/:apiTokenInstance" element={<ChatCreating />} />
-        {/* <Route path="/creating" element={<ChatCreating />} /> */}
-        <Route path="/creating/:idInstance/:apiTokenInstance/:recipientNum" element={<Chat />}/>
+        <Route
+          path="/creating/:idInstance/:apiTokenInstance"
+          element={<ChatCreating />}
+        />
+        <Route
+          path="/creating/:idInstance/:apiTokenInstance/chat/:recipientNum"
+          element={<Chat />}
+        />
       </Routes>
     </Router>
   );
