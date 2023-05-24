@@ -35,6 +35,7 @@ export const Messages = ({ messages }) => {
                 ? styles["sent-messages"]
                 : styles["received-messages"]
             }
+            key={index}
           >
             <div
               className={`${styles.message}
