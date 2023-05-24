@@ -9,13 +9,6 @@ export const IdentificationForm = () => {
     const idInstance = e.target.elements.idInstance.value;
     const apiTokenInstance = e.target.elements.apiTokenInstance.value;
     try {
-      const response = await axios.post(
-        `https://api.green-api.com/waInstance${idInstance}/SetSettings/${apiTokenInstance}`
-      );
-    } catch (error) {
-      console.error(error);
-    }
-    try {
       const response = await axios.get(
         `https://api.green-api.com/waInstance${idInstance}/GetSettings/${apiTokenInstance}`
       );
