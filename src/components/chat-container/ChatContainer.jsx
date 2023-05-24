@@ -10,7 +10,7 @@ export const ChatContainer = () => {
   const onCreatingMessage = (message) => {
     setMessages(message);
   };
-  console.log("sentMessages", messages);
+
   return (
     <div className={styles.container}>
       <ChatHeader />
