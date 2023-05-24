@@ -23,7 +23,6 @@ export const ReceivedMessages = ({ gettingMessages }) => {
           };
           gettingMessages((prevMessages) => [...prevMessages, newMessage]);
 
-          console.log(response.data);
           await axios.delete(
             `https://api.green-api.com/waInstance${idInstance}/DeleteNotification/${apiTokenInstance}/${response.data.receiptId}`
           );

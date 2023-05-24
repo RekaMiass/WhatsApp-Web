@@ -1,5 +1,6 @@
 import styles from "./IdentificationForm.module.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const IdentificationForm = () => {
   const navigate = useNavigate();
@@ -7,12 +8,19 @@ export const IdentificationForm = () => {
   const authorizingData = async (e) => {
     const idInstance = e.target.elements.idInstance.value;
     const apiTokenInstance = e.target.elements.apiTokenInstance.value;
-    if (idInstance && apiTokenInstance) {
-      navigate(`/creating/${idInstance}/${apiTokenInstance}`);
+    try {
+      const response = await axios.get(
+        `https://api.green-api.com/waInstance${idInstance}/GetSettings/${apiTokenInstance}`
+      );
+      if (idInstance && apiTokenInstance) {
+        navigate(`/creating/${idInstance}/${apiTokenInstance}`);
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     authorizingData(e);
