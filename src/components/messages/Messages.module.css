@@ -45,3 +45,9 @@
 .received-message {
   background-color: #fff;
 }
+
+@media (max-width: 500px) {
+  .messages {
+    margin: 20px;
+  }
+}

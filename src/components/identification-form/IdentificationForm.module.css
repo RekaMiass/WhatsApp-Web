@@ -63,3 +63,16 @@
 .btn:hover {
   background-color: #1ec5a1;
 }
+
+@media (max-width: 520px) {
+  .main {
+    width: 90vw;
+  }
+  .header {
+    font-size: 20px;
+  }
+  .btn {
+    padding: 7px 20px;
+    font-size: 14px;
+  }
+}

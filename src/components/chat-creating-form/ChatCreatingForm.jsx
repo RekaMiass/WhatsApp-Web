@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export const ChatCreatingForm = () => {
   const [recipientNum, setRecipientNum] = useState("");
+  const [numValidationError, setNumValidationError] = useState("");
   const navigate = useNavigate();
 
   const recipientNumHandler = (e) => {
@@ -11,9 +12,17 @@ export const ChatCreatingForm = () => {
     setRecipientNum(e.target.value);
   };
 
-  const savingNumberHandler = () => {
-    if (recipientNum) {
+  const savingNumberHandler = (e) => {
+    e.preventDefault();
+    const validation = /^\d+$/;
+    if (
+      recipientNum &&
+      validation.test(recipientNum) &&
+      recipientNum.length === 10
+    ) {
       navigate(`./chat/${recipientNum}`);
+    } else {
+      setNumValidationError("Number validation failed");
     }
   };
 
@@ -34,6 +43,11 @@ export const ChatCreatingForm = () => {
             required
           />
         </div>
+        <p
+          className={numValidationError ? styles.error : styles["hidden-error"]}
+        >
+          {numValidationError}
+        </p>
         <button className={styles.btn} type="submit">
           Start chatting
         </button>

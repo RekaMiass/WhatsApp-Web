@@ -47,6 +47,18 @@
   padding: 10px 0;
 }
 
+.error {
+  visibility: visible;
+  height: 0;
+  color: #e40505;
+  font-size: 12px;
+}
+
+.hidden-error {
+  visibility: hidden;
+  height: 0;
+}
+
 .btn {
   font-family: "Open Sans", sans-serif;
   margin-top: 20px;
@@ -63,4 +75,17 @@
 
 .btn:hover {
   background-color: #1ec5a1;
+}
+
+@media (max-width: 520px) {
+  .main {
+    width: 90vw;
+  }
+  .description {
+    font-size: 16px;
+  }
+  .btn {
+    padding: 7px 20px;
+    font-size: 14px;
+  }
 }
