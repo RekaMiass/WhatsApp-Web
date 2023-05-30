@@ -1,4 +1,3 @@
-import "./App.css";
 import "./reset.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ChatCreating } from "./pages/Chat-creating/ChatCreating";
@@ -8,7 +7,7 @@ import { Chat } from "./pages/Chat/Chat";
 function App() {
   return (
     <Router>
-      <Routes className="App">
+      <Routes>
         <Route path="/" element={<Identification />} />
         <Route
           path="/creating/:idInstance/:apiTokenInstance"
